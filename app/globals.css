@@ -44,6 +44,13 @@ body {
   scroll-behavior: smooth;
 }
 
+/* Clears the sticky header pill (top: 1rem + h-14 = 4.5rem) so scroll-to-section
+   targets never land tucked underneath it. The extra 2.5rem also absorbs the
+   24px that a not-yet-revealed section rises by when its Reveal settles. */
+html {
+  scroll-padding-top: 7rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     scroll-behavior: auto;

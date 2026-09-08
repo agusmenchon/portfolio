@@ -5,7 +5,7 @@ export const SECTIONS: { id: SectionId; label: string }[] = [
   { id: "career", label: "My Career" },
 ];
 
-export type CareerTabId = "experience" | "education" | "courses" | "skills";
+export type CareerTabId = "education" | "courses" | "skills";
 
 export type CareerTabMeta = {
   id: CareerTabId;
@@ -14,17 +14,9 @@ export type CareerTabMeta = {
 };
 
 export const CAREER_TABS: CareerTabMeta[] = [
-  { id: "experience", label: "Experiencia", slug: "experience" },
   { id: "education", label: "Estudios", slug: "education" },
   { id: "courses", label: "Cursos", slug: "courses" },
   { id: "skills", label: "Skills", slug: "skills" },
-];
-
-export type MobileTabId = "about" | CareerTabId;
-
-export const MOBILE_TABS: { id: MobileTabId; label: string; slug: string }[] = [
-  { id: "about", label: "Sobre mi", slug: "aboutme" },
-  ...CAREER_TABS,
 ];
 
 export const HERO = {

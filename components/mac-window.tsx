@@ -9,15 +9,13 @@ export function MacWindow({
   slug,
   children,
   className = "",
-  onMinimize,
   interactive = false,
   dragConstraintsRef,
 }: {
   slug: string;
   children: ReactNode;
   className?: string;
-  onMinimize?: () => void;
-  /** Enables drag + maximize (desktop WindowManager only; mobile keeps the static window). */
+  /** Enables drag + maximize. */
   interactive?: boolean;
   dragConstraintsRef?: RefObject<HTMLElement | null>;
 }) {
@@ -47,18 +45,9 @@ export function MacWindow({
           interactive && !maximized ? "cursor-grab select-none active:cursor-grabbing" : ""
         }`}
       >
-        <div className="flex gap-2" aria-hidden={!onMinimize}>
+        <div className="flex gap-2">
           <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-          {onMinimize ? (
-            <button
-              type="button"
-              onClick={onMinimize}
-              aria-label="Minimizar"
-              className="h-3 w-3 rounded-full bg-[#febc2e] transition-transform hover:scale-110"
-            />
-          ) : (
-            <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-          )}
+          <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
           {interactive ? (
             <button
               type="button"

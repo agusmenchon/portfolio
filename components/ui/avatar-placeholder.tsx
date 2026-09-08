@@ -12,16 +12,20 @@ export function AvatarPlaceholder({
   size = "lg",
   label = "Placeholder de foto de perfil",
   className = "",
+  decorative = false,
 }: {
   size?: "lg" | "sm";
   label?: string;
   className?: string;
+  /** Drops the img role/label so purely ornamental instances aren't announced. */
+  decorative?: boolean;
 }) {
   return (
     <div
       className={`flex shrink-0 items-center justify-center rounded-full border-2 border-dashed border-border text-muted ${SIZE_CLASSES[size]} ${className}`}
-      role="img"
-      aria-label={label}
+      role={decorative ? undefined : "img"}
+      aria-label={decorative ? undefined : label}
+      aria-hidden={decorative || undefined}
     >
       <svg
         viewBox="0 0 24 24"

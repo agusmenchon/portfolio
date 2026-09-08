@@ -13,7 +13,7 @@ export function Experience() {
           <Reveal key={i} delay={i * 0.08}>
             <div className="flex gap-5">
               <div className="flex flex-col items-center">
-                <AvatarPlaceholder size="sm" label={`Placeholder de logo de ${item.company}`} />
+                <AvatarPlaceholder size="sm" decorative />
                 {i < EXPERIENCE.length - 1 ? <div className="w-px flex-1 bg-border" aria-hidden /> : null}
               </div>
 

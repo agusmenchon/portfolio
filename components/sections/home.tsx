@@ -1,18 +1,16 @@
 "use client";
 
-import type { MouseEvent } from "react";
+import { AvatarPlaceholder } from "@/components/ui/avatar-placeholder";
 import { Button } from "@/components/ui/button";
 import { SocialLinks } from "@/components/ui/social-links";
+import { scrollToId } from "@/lib/scroll";
 import { ABOUT, HERO } from "@/lib/content";
-
-function scrollToContact(e: MouseEvent<HTMLAnchorElement>) {
-  e.preventDefault();
-  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-}
 
 export function Home() {
   return (
     <div className="flex flex-col gap-6">
+      <AvatarPlaceholder />
+
       <p className="text-sm font-medium text-accent">{HERO.greeting}</p>
 
       <h1 className="font-heading text-3xl font-medium leading-[1.15] tracking-tight sm:text-4xl">
@@ -28,7 +26,7 @@ export function Home() {
       </div>
 
       <div className="flex flex-wrap items-center gap-4 pt-2">
-        <Button href="#contact" onClick={scrollToContact}>
+        <Button type="button" onClick={() => scrollToId("contact")}>
           Contacto
         </Button>
         <SocialLinks />

@@ -1,16 +1,34 @@
-export function AvatarPlaceholder({ className = "" }: { className?: string }) {
+const SIZE_CLASSES = {
+  lg: "h-28 w-28",
+  sm: "h-14 w-14",
+} as const;
+
+const ICON_SIZE_CLASSES = {
+  lg: "h-9 w-9",
+  sm: "h-5 w-5",
+} as const;
+
+export function AvatarPlaceholder({
+  size = "lg",
+  label = "Placeholder de foto de perfil",
+  className = "",
+}: {
+  size?: "lg" | "sm";
+  label?: string;
+  className?: string;
+}) {
   return (
     <div
-      className={`flex h-28 w-28 shrink-0 items-center justify-center rounded-full border-2 border-dashed border-border text-muted ${className}`}
+      className={`flex shrink-0 items-center justify-center rounded-full border-2 border-dashed border-border text-muted ${SIZE_CLASSES[size]} ${className}`}
       role="img"
-      aria-label="Placeholder de foto de perfil"
+      aria-label={label}
     >
       <svg
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
         strokeWidth={1.4}
-        className="h-9 w-9"
+        className={ICON_SIZE_CLASSES[size]}
         aria-hidden
       >
         <circle cx="12" cy="8" r="3.2" />

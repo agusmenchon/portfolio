@@ -32,7 +32,7 @@ export function MacWindow({
       animate={interactive && maximized ? { x: 0, y: 0 } : undefined}
       className={
         interactive && maximized
-          ? "absolute inset-0 z-20 overflow-hidden rounded-2xl border border-border bg-surface shadow-[0_0_60px_-24px_var(--accent)]"
+          ? "absolute inset-0 z-20 flex flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-[0_0_60px_-24px_var(--accent)]"
           : `relative overflow-hidden rounded-2xl border border-border bg-surface shadow-[0_0_60px_-24px_var(--accent)] ${className}`
       }
     >
@@ -41,7 +41,7 @@ export function MacWindow({
           if (!interactive || maximized) return;
           dragControls.start(e);
         }}
-        className={`flex items-center gap-4 px-5 py-3.5 sm:px-6 ${
+        className={`flex shrink-0 items-center gap-4 px-5 py-3.5 sm:px-6 ${
           interactive && !maximized ? "cursor-grab select-none active:cursor-grabbing" : ""
         }`}
       >
@@ -63,7 +63,9 @@ export function MacWindow({
           {PROFILE.name}/{slug}
         </span>
       </div>
-      <div className={`px-5 pb-6 sm:px-6 sm:pb-8 ${interactive && maximized ? "h-full overflow-auto" : ""}`}>
+      {/* Maximized, the body takes the leftover column height (not `h-full`, which
+          would overflow past the title bar and clip its own bottom edge). */}
+      <div className={`px-5 pb-6 sm:px-6 sm:pb-8 ${interactive && maximized ? "min-h-0 flex-1 overflow-auto" : ""}`}>
         {children}
       </div>
     </motion.div>

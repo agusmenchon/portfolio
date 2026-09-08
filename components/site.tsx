@@ -74,8 +74,8 @@ export function Site() {
               interactive
               dragConstraintsRef={careerStageRef}
             >
-              <div className="flex gap-6">
-                <nav className="flex w-36 shrink-0 flex-col gap-1">
+              <div className="flex flex-col gap-6 sm:flex-row">
+                <nav className="flex w-full shrink-0 flex-row gap-1 sm:w-36 sm:flex-col">
                   {CAREER_TABS.map((tab) => (
                     <button
                       key={tab.id}

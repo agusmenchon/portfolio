@@ -1,71 +1,118 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { LanguageToggle } from "@/components/ui/language-toggle";
+import { useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { MacWindow } from "@/components/mac-window";
-import { WindowContent } from "@/components/window-content";
 import { Home } from "@/components/sections/home";
 import { Experience } from "@/components/sections/experience";
+import { Skills } from "@/components/sections/skills";
+import { Education } from "@/components/sections/education";
 import { Contact } from "@/components/sections/contact";
 import { Reveal } from "@/components/ui/reveal";
 import { scrollToId } from "@/lib/scroll";
-import { PROFILE, SECTIONS, CAREER_TABS, type CareerTabId } from "@/lib/content";
+import { PROFILE, SECTIONS } from "@/lib/content";
 
-const WIDE = "mx-auto w-full max-w-6xl px-5 sm:px-8";
+const WIDE = "mx-auto w-full max-w-[91rem] px-6 sm:px-16";
+
+function MenuIcon({ open }: { open: boolean }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+      <path
+        d={open ? "M4 4l10 10M14 4L4 14" : "M2.5 5h13M2.5 9h13M2.5 13h13"}
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
 
 export function Site() {
-  const aboutStageRef = useRef<HTMLDivElement>(null);
-  const careerStageRef = useRef<HTMLDivElement>(null);
-  const [careerTab, setCareerTab] = useState<CareerTabId>("education");
-  const activeCareerMeta = CAREER_TABS.find((tab) => tab.id === careerTab)!;
+  const [menuOpen, setMenuOpen] = useState(false);
+  const reduceMotion = useReducedMotion();
+
+  function go(id: (typeof SECTIONS)[number]["id"]) {
+    setMenuOpen(false);
+    scrollToId(id);
+  }
 
   return (
     <>
-      <header className="sticky top-4 z-40 flex justify-center px-5 sm:px-8">
-        <div className="flex h-14 w-full max-w-3xl items-center gap-2 rounded-full border border-border/60 bg-surface/70 px-4 shadow-lg backdrop-blur-xl backdrop-saturate-150 sm:gap-4 sm:px-6">
-          <button type="button" onClick={() => scrollToId("about")} className="min-w-0 flex-1 text-left">
+      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md backdrop-saturate-150">
+        <div className={`${WIDE} flex h-16 items-center gap-4`}>
+          <button type="button" onClick={() => go("about")} className="min-w-0 flex-1 text-left sm:flex-initial">
             <p className="truncate font-heading text-base font-medium tracking-tight">{PROFILE.name}</p>
             <p className="truncate text-xs text-muted">{PROFILE.role}</p>
           </button>
 
-          <nav className="flex shrink-0 items-center gap-1">
-            {/* Section links are hidden below `sm`: the pill cannot fit name + 2 links +
-                CTA + language toggle at phone widths, and on a single-scroll page both
-                sections stay reachable by scrolling. */}
+          <nav className="hidden flex-1 items-center justify-center gap-1 sm:flex">
             {SECTIONS.map((s) => (
               <button
                 key={s.id}
                 type="button"
-                onClick={() => scrollToId(s.id)}
-                className="hidden rounded-full px-3.5 py-2 text-sm text-muted transition-colors hover:text-foreground sm:block"
+                onClick={() => go(s.id)}
+                className="rounded-md px-3 py-2 text-sm text-muted transition-colors hover:text-foreground"
               >
                 {s.label}
               </button>
             ))}
-            <Button type="button" size="sm" onClick={() => scrollToId("contact")}>
-              Let&apos;s Talk
-            </Button>
           </nav>
 
-          {/* `min-w-fit` (not `min-w-0`): the toggle is fixed-width, so a shrinkable
-              wrapper would let it spill left over the nav on the narrowest phones. */}
-          <div className="flex min-w-fit flex-1 items-center justify-end">
-            <LanguageToggle />
+          <div className="hidden shrink-0 items-center gap-3 sm:flex">
+            <Button type="button" size="sm" onClick={() => go("contact")}>
+              Let&apos;s Talk
+            </Button>
           </div>
+
+          <button
+            type="button"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:bg-surface sm:hidden"
+          >
+            <MenuIcon open={menuOpen} />
+          </button>
         </div>
+
+        <AnimatePresence initial={false}>
+          {menuOpen ? (
+            <motion.nav
+              id="mobile-nav"
+              key="mobile-nav"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: reduceMotion ? 0 : 0.22, ease: "easeInOut" }}
+              className="overflow-hidden border-t border-border/60 sm:hidden"
+            >
+              <div className={`${WIDE} flex flex-col gap-1 py-3`}>
+                {SECTIONS.map((s) => (
+                  <button
+                    key={s.id}
+                    type="button"
+                    onClick={() => go(s.id)}
+                    className="rounded-md px-2 py-2.5 text-left text-sm text-muted transition-colors hover:bg-surface hover:text-foreground"
+                  >
+                    {s.label}
+                  </button>
+                ))}
+                <div className="mt-2 flex items-center gap-3 px-2">
+                  <Button type="button" size="sm" className="flex-1" onClick={() => go("contact")}>
+                    Let&apos;s Talk
+                  </Button>
+                </div>
+              </div>
+            </motion.nav>
+          ) : null}
+        </AnimatePresence>
       </header>
 
       <main className={`${WIDE} flex flex-col gap-24 py-16`}>
         <Reveal>
-          {/* The stage is deliberately taller than the window it holds: it is both the
-              maximize target (`absolute inset-0`) and the drag-constraints box, so the
-              slack is what makes maximizing enlarge and dragging move. `min-h` covers
-              the usual case; `pb` keeps a slack floor if the content ever outgrows it. */}
-          <section id="about" ref={aboutStageRef} className="relative min-h-[85vh] pb-16">
-            <MacWindow slug="aboutme" className="mx-auto md:w-4/5" interactive dragConstraintsRef={aboutStageRef}>
-              <Home />
-            </MacWindow>
+          <section id="about">
+            <Home />
           </section>
         </Reveal>
 
@@ -76,36 +123,14 @@ export function Site() {
         </Reveal>
 
         <Reveal>
-          <section id="career" ref={careerStageRef} className="relative min-h-[85vh] pb-16">
-            <MacWindow
-              slug={activeCareerMeta.slug}
-              className="mx-auto md:w-4/5"
-              interactive
-              dragConstraintsRef={careerStageRef}
-            >
-              <div className="flex flex-col gap-6 sm:flex-row">
-                <nav className="flex w-full shrink-0 flex-row gap-1 sm:w-36 sm:flex-col">
-                  {CAREER_TABS.map((tab) => (
-                    <button
-                      key={tab.id}
-                      type="button"
-                      onClick={() => setCareerTab(tab.id)}
-                      className={`rounded-lg px-3.5 py-2.5 text-left text-sm font-medium transition-colors ${
-                        careerTab === tab.id
-                          ? "bg-accent text-accent-foreground"
-                          : "text-muted hover:bg-background hover:text-foreground"
-                      }`}
-                    >
-                      {tab.label}
-                    </button>
-                  ))}
-                </nav>
+          <section id="skills">
+            <Skills />
+          </section>
+        </Reveal>
 
-                <div className="min-h-[420px] min-w-0 flex-1">
-                  <WindowContent id={careerTab} />
-                </div>
-              </div>
-            </MacWindow>
+        <Reveal>
+          <section id="education">
+            <Education />
           </section>
         </Reveal>
 

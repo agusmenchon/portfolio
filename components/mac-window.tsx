@@ -11,6 +11,7 @@ export function MacWindow({
   className = "",
   interactive = false,
   dragConstraintsRef,
+  hint,
 }: {
   slug: string;
   children: ReactNode;
@@ -18,6 +19,8 @@ export function MacWindow({
   /** Enables drag + maximize. */
   interactive?: boolean;
   dragConstraintsRef?: RefObject<HTMLElement | null>;
+  /** Optional hint text shown next to the traffic lights, e.g. "arrastrá esta ventana". */
+  hint?: string;
 }) {
   const dragControls = useDragControls();
   const [maximized, setMaximized] = useState(false);
@@ -62,6 +65,11 @@ export function MacWindow({
         <span className="truncate text-xs font-medium text-muted">
           {PROFILE.name}/{slug}
         </span>
+        {hint ? (
+          <span className="ml-auto hidden shrink-0 font-mono text-[11px] text-muted/70 sm:block">
+            {hint}
+          </span>
+        ) : null}
       </div>
       {/* Maximized, the body takes the leftover column height (not `h-full`, which
           would overflow past the title bar and clip its own bottom edge). */}

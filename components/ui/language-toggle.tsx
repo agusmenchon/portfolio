@@ -4,10 +4,17 @@ import { useLayoutEffect, useState } from "react";
 
 type Lang = "es" | "en";
 
+function detectBrowserLang(): Lang {
+  const locales = window.navigator.languages ?? [window.navigator.language];
+  const isSpanish = locales.some((locale) => locale.toLowerCase().startsWith("es"));
+  return isSpanish ? "es" : "en";
+}
+
 function readStoredLang(): Lang {
   if (typeof window === "undefined") return "es";
   const stored = window.localStorage.getItem("lang");
-  return stored === "en" ? "en" : "es";
+  if (stored === "en" || stored === "es") return stored;
+  return detectBrowserLang();
 }
 
 export function LanguageToggle({ className = "" }: { className?: string }) {

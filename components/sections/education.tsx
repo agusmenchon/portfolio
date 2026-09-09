@@ -5,7 +5,7 @@ import { EDUCATION } from "@/lib/content";
 export function Education() {
   return (
     <>
-      <SectionHeading eyebrow="Estudios" title="Formación" />
+      <SectionHeading title="Estudios" />
       <div className="flex flex-col gap-4">
         {EDUCATION.map((item, i) => (
           <Card key={i} className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
@@ -17,7 +17,6 @@ export function Education() {
           </Card>
         ))}
       </div>
-      {/* TODO: next iteration — staggered reveal per card */}
     </>
   );
 }

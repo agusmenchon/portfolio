@@ -7,7 +7,7 @@
   --surface-hover: #ececec;
   --border: #e2e2e2;
   --muted: #6b6b6b;
-  --accent: #0066ff;
+  --accent: #171717;
   --accent-foreground: #ffffff;
 }
 
@@ -18,7 +18,7 @@
   --surface-hover: #1d1d1d;
   --border: #272727;
   --muted: #9a9a9a;
-  --accent: #4d94ff;
+  --accent: #ededed;
   --accent-foreground: #0a0a0a;
 }
 
@@ -33,6 +33,7 @@
   --color-accent-foreground: var(--accent-foreground);
   --font-heading: var(--font-fraunces);
   --font-sans: var(--font-public-sans);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 body {
@@ -44,11 +45,11 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Clears the sticky header pill (top: 1rem + h-14 = 4.5rem) so scroll-to-section
-   targets never land tucked underneath it. The extra 2.5rem also absorbs the
-   24px that a not-yet-revealed section rises by when its Reveal settles. */
+/* Clears the sticky header bar (h-16 = 4rem) so scroll-to-section targets never
+   land tucked underneath it. The extra ~2.5rem also absorbs the 24px that a
+   not-yet-revealed section rises by when its Reveal settles. */
 html {
-  scroll-padding-top: 7rem;
+  scroll-padding-top: 6.5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

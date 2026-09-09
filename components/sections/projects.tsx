@@ -1,19 +1,28 @@
+"use client";
+
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Card } from "@/components/ui/card";
 import { Pill } from "@/components/ui/pill";
 import { Reveal } from "@/components/ui/reveal";
 import { PROJECTS } from "@/lib/content";
+import { useLang } from "@/lib/lang-context";
 
 export function Projects() {
+  const { lang } = useLang();
+  const projects = PROJECTS[lang];
+  const eyebrow = lang === "es" ? "Proyectos" : "Projects";
+  const title = lang === "es" ? "Qué construí" : "What I've built";
+  const viewProject = lang === "es" ? "Ver proyecto →" : "View project →";
+
   return (
     <section id="projects" className="border-b border-border py-20 sm:py-28">
       <Container>
         <Reveal>
-          <SectionHeading eyebrow="Proyectos" title="Qué construí" />
+          <SectionHeading eyebrow={eyebrow} title={title} />
         </Reveal>
         <div className="grid gap-4 sm:grid-cols-2">
-          {PROJECTS.map((project, i) => (
+          {projects.map((project, i) => (
             <Reveal key={project.name} delay={i * 0.05}>
               <Card>
                 <h3 className="font-heading text-lg font-medium">{project.name}</h3>
@@ -32,7 +41,7 @@ export function Projects() {
                     rel="noopener noreferrer"
                     className="mt-4 inline-block text-sm font-medium text-accent"
                   >
-                    Ver proyecto →
+                    {viewProject}
                   </a>
                 ) : null}
               </Card>

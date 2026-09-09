@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Public_Sans, JetBrains_Mono } from "next/font/google";
+import { LangProvider } from "@/lib/lang-context";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -21,7 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Agustin Menchon — Full Stack Developer",
   description:
-    "Desarrollador full stack Node, disponible para trabajo remoto.",
+    "Full-stack Node developer, available for remote work.",
 };
 
 const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);else if(window.matchMedia("(prefers-color-scheme: dark)").matches)document.documentElement.setAttribute("data-theme","dark")}catch(e){}})()`;
@@ -32,12 +33,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="es"
       data-theme="light"
       suppressHydrationWarning
-      className={`${fraunces.variable} ${publicSans.variable} ${jetbrainsMono.variable}`}
+    className={`${fraunces.variable} ${publicSans.variable} ${jetbrainsMono.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+
       </head>
-      <body className="min-h-screen font-sans antialiased">{children}</body>
+      <body className="min-h-screen font-sans antialiased">
+        <LangProvider>{children}</LangProvider>
+      </body>
     </html>
   );
 }

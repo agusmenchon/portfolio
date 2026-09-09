@@ -1,18 +1,26 @@
+"use client";
+
 import Image from "next/image";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { AvatarPlaceholder } from "@/components/ui/avatar-placeholder";
 import { Pill } from "@/components/ui/pill";
 import { Reveal } from "@/components/ui/reveal";
-import { EXPERIENCE } from "@/lib/content";
+import { EXPERIENCE, SECTIONS, UI } from "@/lib/content";
+import { useLang } from "@/lib/lang-context";
 
 export function Experience() {
+  const { lang } = useLang();
+  const experience = EXPERIENCE[lang];
+  const ui = UI[lang];
+  const heading = SECTIONS[lang].find((s) => s.id === "experience")!.label;
+
   return (
     <>
       <div className="mx-auto w-full max-w-4xl">
-        <SectionHeading title="Experiencia" />
+        <SectionHeading title={heading} />
       </div>
       <div className="mx-auto flex w-full max-w-4xl flex-col">
-        {EXPERIENCE.map((item, i) => (
+        {experience.map((item, i) => (
           <Reveal key={i} delay={i * 0.08}>
             <div className="flex gap-5">
               <div className="flex flex-col items-center">
@@ -20,7 +28,7 @@ export function Experience() {
                   <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-white p-2">
                     <Image
                       src={item.logo}
-                      alt={`Logo de ${item.company}`}
+                      alt={ui.logoAlt(item.company)}
                       width={40}
                       height={40}
                       className="h-full w-full object-contain"
@@ -29,7 +37,7 @@ export function Experience() {
                 ) : (
                   <AvatarPlaceholder size="sm" decorative />
                 )}
-                {i < EXPERIENCE.length - 1 ? <div className="w-px flex-1 bg-border" aria-hidden /> : null}
+                {i < experience.length - 1 ? <div className="w-px flex-1 bg-border" aria-hidden /> : null}
               </div>
 
               <div className="flex flex-1 flex-col gap-2 pb-10">
@@ -39,7 +47,7 @@ export function Experience() {
                   </h3>
                   <Pill>{item.period}</Pill>
                 </div>
-                
+
                 {item.link ? (
                   <a
                     href={item.link}

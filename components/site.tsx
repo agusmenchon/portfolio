@@ -10,7 +10,8 @@ import { Education } from "@/components/sections/education";
 import { Contact } from "@/components/sections/contact";
 import { Reveal } from "@/components/ui/reveal";
 import { scrollToId } from "@/lib/scroll";
-import { PROFILE, SECTIONS } from "@/lib/content";
+import { PROFILE, SECTIONS, UI } from "@/lib/content";
+import { useLang } from "@/lib/lang-context";
 
 const WIDE = "mx-auto w-full max-w-[91rem] px-6 sm:px-16";
 
@@ -30,8 +31,11 @@ function MenuIcon({ open }: { open: boolean }) {
 export function Site() {
   const [menuOpen, setMenuOpen] = useState(false);
   const reduceMotion = useReducedMotion();
+  const { lang } = useLang();
+  const sections = SECTIONS[lang];
+  const ui = UI[lang];
 
-  function go(id: (typeof SECTIONS)[number]["id"]) {
+  function go(id: (typeof sections)[number]["id"]) {
     setMenuOpen(false);
     scrollToId(id);
   }
@@ -46,7 +50,7 @@ export function Site() {
           </button>
 
           <nav className="hidden flex-1 items-center justify-center gap-1 sm:flex">
-            {SECTIONS.map((s) => (
+            {sections.map((s) => (
               <button
                 key={s.id}
                 type="button"
@@ -60,7 +64,7 @@ export function Site() {
 
           <div className="hidden shrink-0 items-center gap-3 sm:flex">
             <Button type="button" size="sm" onClick={() => go("contact")}>
-              Let&apos;s Talk
+              {ui.letsTalk}
             </Button>
           </div>
 
@@ -69,7 +73,7 @@ export function Site() {
             onClick={() => setMenuOpen((v) => !v)}
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
-            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-label={menuOpen ? ui.closeMenu : ui.openMenu}
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:bg-surface sm:hidden"
           >
             <MenuIcon open={menuOpen} />
@@ -88,7 +92,7 @@ export function Site() {
               className="overflow-hidden border-t border-border/60 sm:hidden"
             >
               <div className={`${WIDE} flex flex-col gap-1 py-3`}>
-                {SECTIONS.map((s) => (
+                {sections.map((s) => (
                   <button
                     key={s.id}
                     type="button"
@@ -100,7 +104,7 @@ export function Site() {
                 ))}
                 <div className="mt-2 flex items-center gap-3 px-2">
                   <Button type="button" size="sm" className="flex-1" onClick={() => go("contact")}>
-                    Let&apos;s Talk
+                    {ui.letsTalk}
                   </Button>
                 </div>
               </div>

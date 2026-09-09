@@ -3,7 +3,8 @@
 import type { ReactNode, RefObject } from "react";
 import { useState } from "react";
 import { motion, useDragControls } from "framer-motion";
-import { PROFILE } from "@/lib/content";
+import { PROFILE, UI } from "@/lib/content";
+import { useLang } from "@/lib/lang-context";
 
 export function MacWindow({
   slug,
@@ -24,6 +25,8 @@ export function MacWindow({
 }) {
   const dragControls = useDragControls();
   const [maximized, setMaximized] = useState(false);
+  const { lang } = useLang();
+  const ui = UI[lang];
 
   return (
     <motion.div
@@ -55,7 +58,7 @@ export function MacWindow({
             <button
               type="button"
               onClick={() => setMaximized((m) => !m)}
-              aria-label={maximized ? "Restaurar" : "Maximizar"}
+              aria-label={maximized ? ui.restore : ui.maximize}
               className="h-3 w-3 rounded-full bg-[#28c840] transition-transform hover:scale-110"
             />
           ) : (

@@ -132,7 +132,7 @@ export const EXPERIENCE: Record<Lang, ExperienceItem[]> = {
     {
       role: "Frontend Software Developer",
       company: "Software On the Road",
-      link: "https://www.softwareontheroad.com.ar",
+      link: "https://www.softwareontheroad.com",
       period: "Sep 2023 — Nov 2025",
       description:
         "Trabajé día a día con React, TypeScript, MUI, Node.js, Express, Next.js, MongoDB y PostgreSQL. Progresé de Frontend Developer a Frontend Lead, tomando ownership de arquitectura frontend y decisiones técnicas. Trabajé con arquitecturas Server-Driven UI, integraciones enterprise con SAP y sistemas externos, aporté en backend cuando fue necesario, y apliqué SEO (metadata, HTML semántico, structured data) mejorando la discoverability de forma medible.",

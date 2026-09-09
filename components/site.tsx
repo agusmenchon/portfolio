@@ -36,8 +36,15 @@ export function Site() {
   const ui = UI[lang];
 
   function go(id: (typeof sections)[number]["id"]) {
-    setMenuOpen(false);
-    scrollToId(id);
+    // The mobile dropdown's exit animation (height -> 0, 220ms) fights the
+    // browser's native smooth-scroll and cancels it mid-flight. Wait it out
+    // before scrolling when the menu was actually open.
+    if (menuOpen) {
+      setMenuOpen(false);
+      window.setTimeout(() => scrollToId(id), 260);
+    } else {
+      scrollToId(id);
+    }
   }
 
   return (
@@ -68,16 +75,21 @@ export function Site() {
             </Button>
           </div>
 
-          <button
-            type="button"
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-expanded={menuOpen}
-            aria-controls="mobile-nav"
-            aria-label={menuOpen ? ui.closeMenu : ui.openMenu}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:bg-surface sm:hidden"
-          >
-            <MenuIcon open={menuOpen} />
-          </button>
+          <div className="flex shrink-0 items-center gap-2 sm:hidden">
+            <Button type="button" size="sm" onClick={() => go("contact")}>
+              {ui.contact}
+            </Button>
+            <button
+              type="button"
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav"
+              aria-label={menuOpen ? ui.closeMenu : ui.openMenu}
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:bg-surface"
+            >
+              <MenuIcon open={menuOpen} />
+            </button>
+          </div>
         </div>
 
         <AnimatePresence initial={false}>
@@ -102,11 +114,6 @@ export function Site() {
                     {s.label}
                   </button>
                 ))}
-                <div className="mt-2 flex items-center gap-3 px-2">
-                  <Button type="button" size="sm" className="flex-1" onClick={() => go("contact")}>
-                    {ui.letsTalk}
-                  </Button>
-                </div>
               </div>
             </motion.nav>
           ) : null}

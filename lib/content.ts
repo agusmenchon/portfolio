@@ -433,6 +433,7 @@ export const UI: Record<
     closeMenu: string;
     openMenu: string;
     letsTalk: string;
+    contact: string;
     dragWindow: string;
     restore: string;
     maximize: string;
@@ -447,6 +448,7 @@ export const UI: Record<
     closeMenu: "Cerrar menú",
     openMenu: "Abrir menú",
     letsTalk: "Let's Talk",
+    contact: "Contacto",
     dragWindow: "arrastrá esta ventana",
     restore: "Restaurar",
     maximize: "Maximizar",
@@ -460,6 +462,7 @@ export const UI: Record<
     closeMenu: "Close menu",
     openMenu: "Open menu",
     letsTalk: "Let's Talk",
+    contact: "Contact",
     dragWindow: "drag this window",
     restore: "Restore",
     maximize: "Maximize",

@@ -434,6 +434,7 @@ export const UI: Record<
     openMenu: string;
     letsTalk: string;
     contact: string;
+    viewCv: string;
     dragWindow: string;
     restore: string;
     maximize: string;
@@ -449,6 +450,7 @@ export const UI: Record<
     openMenu: "Abrir menú",
     letsTalk: "Let's Talk",
     contact: "Contacto",
+    viewCv: "Ver CV",
     dragWindow: "arrastrá esta ventana",
     restore: "Restaurar",
     maximize: "Maximizar",
@@ -463,6 +465,7 @@ export const UI: Record<
     openMenu: "Open menu",
     letsTalk: "Let's Talk",
     contact: "Contact",
+    viewCv: "View CV",
     dragWindow: "drag this window",
     restore: "Restore",
     maximize: "Maximize",

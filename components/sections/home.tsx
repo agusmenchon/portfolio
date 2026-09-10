@@ -2,9 +2,11 @@
 
 import { useRef } from "react";
 import { MacWindow } from "@/components/mac-window";
+import { Button } from "@/components/ui/button";
 import { Pill } from "@/components/ui/pill";
 import { HERO, WHOAMI, UI } from "@/lib/content";
 import { useLang } from "@/lib/lang-context";
+import { scrollToId } from "@/lib/scroll";
 
 export function Home() {
   const stageRef = useRef<HTMLDivElement>(null);
@@ -81,6 +83,15 @@ export function Home() {
             </div>
           </div>
         </MacWindow>
+      </div>
+
+      <div className="flex flex-wrap items-center justify-center gap-3">
+        <Button type="button" onClick={() => scrollToId("contact")}>
+          {ui.contact}
+        </Button>
+        <Button href="/cv.pdf" target="_blank" rel="noopener noreferrer" variant="secondary">
+          {ui.viewCv}
+        </Button>
       </div>
     </div>
   );

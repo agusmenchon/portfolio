@@ -72,8 +72,8 @@ export const WHOAMI: Record<
     title: "Agustín — Software Full-Stack Developer",
     badge: "active: prod_ready",
     description:
-      "Soy un desarrollador full-stack con foco en frontend, especializado en React, TypeScript y Next.js. Me apasiona crear experiencias web rápidas, accesibles y optimizadas para SEO, combinando buenas prácticas de desarrollo con un enfoque en resultados medibles.",
-    focus: "SEO técnico, performance web y landing pages de alta conversión",
+      "Soy desarrollador full-stack, con experiencia construyendo aplicaciones web complejas de punta a punta: arquitectura frontend en React, TypeScript y Next.js, y diseño e implementación de APIs, bases de datos y lógica de negocio en Node.js, Express y Java Spring Boot. Me involucro en todo el ciclo, desde la interfaz hasta las integraciones con sistemas externos, con foco en soluciones mantenibles y escalables.",
+    focus: "Desarrollo full-stack, arquitectura de aplicaciones e integraciones backend",
     experience: "3+ años (freelance, agencias y equipos de producto)",
     coreStack: ["React", "TypeScript", "Next.js", "Node.js", "SEO Técnico"],
     status: "online & open to opportunities",
@@ -83,8 +83,8 @@ export const WHOAMI: Record<
     title: "Agustín — Software Full-Stack Developer",
     badge: "active: prod_ready",
     description:
-      "I'm a full-stack developer focused on frontend, specialized in React, TypeScript and Next.js. I'm passionate about building fast, accessible, SEO-optimized web experiences, combining development best practices with a focus on measurable outcomes.",
-    focus: "Technical SEO, web performance and high-conversion landing pages",
+      "I'm a full-stack developer with experience building complex web applications end-to-end: frontend architecture in React, TypeScript and Next.js, and designing and implementing APIs, databases and business logic in Node.js, Express and Java Spring Boot. I'm involved across the whole cycle, from the interface to integrations with external systems, with a focus on maintainable, scalable solutions.",
+    focus: "Full-stack development, application architecture and backend integrations",
     experience: "3+ years (freelance, agencies and product teams)",
     coreStack: ["React", "TypeScript", "Next.js", "Node.js", "Technical SEO"],
     status: "online & open to opportunities",
@@ -110,64 +110,82 @@ export type ExperienceItem = {
 export const EXPERIENCE: Record<Lang, ExperienceItem[]> = {
   es: [
     {
+      role: "Freelance — Automatización y Marketing Digital",
+      company: "AdsWithMarian LLC",
+      period: "Jul 2026 — Presente",
+      link: "https://adswithmarian.com/",
+      description:
+        "Desarrollo de automatizaciones y dashboards de datos para trackear y reportar performance de campañas de Google Ads y Meta Ads. Automatizaciones para monitorear y analizar a la competencia. Diseño y desarrollo de landing page con SEO técnico.",
+      tags: ["Freelance", "Automatización", "Google Ads", "Meta Ads", "Dashboards", "SEO Técnico"],
+    },
+    {
       role: "Freelance Web Developer & Automation Specialist",
       company: "Echo Koh Tao",
-      period: "May 2026 — Jul 2026",
+      period: "May 2026 — Jun 2026",
       description:
         "Diseño y desarrollo de landing page responsiva orientadas a conversión, con SEO técnico (HTML semántico, metadata, indexación), optimización de performance e imágenes, deploy a producción e integración de flujos automatizados para gestión de datos de huéspedes.",
       link: "https://echokohtao.com/",
-      tags: ["SEO Técnico", "Landing Pages", "Performance", "Deploy", "Automatización", "Supabase"],
+      tags: ["Freelance", "SEO Técnico", "Landing Pages", "Performance", "Deploy", "Automatización", "Supabase"],
       logo: "/logos/echo-koh-tao.png",
     },
     {
       role: "Frontend Software Developer",
       company: "Vincula Group (para Sinergia Tech)",
-      period: "Nov 2025 — Mar 2026",
+      period: "Nov 2025 — May 2026",
       link: "https://www.vincula.group",
       description:
-        "Desarrollé el frontend de un sistema de gestión de transporte para una empresa de logística de camiones, definiendo la arquitectura frontend de un equipo chico. Desarrollé interfaces en React con foco en mantenibilidad y reusabilidad, manejo de estado con Redux. En el apartado Mobile, desarrollé una app React para escanear códigos de barras de etiquetas de transporte.",
-      tags: ["React", "Redux", "Arquitectura Frontend", "Mobile"],
+        "Lideré el frontend de un sistema de gestión de transporte para una empresa de logística de camiones, definiendo la arquitectura frontend de un equipo chico en una aplicación business-critical. Desarrollé interfaces en React con foco en mantenibilidad, reusabilidad y prácticas de desarrollo consistentes, con manejo de estado en Redux. En el apartado Mobile, desarrollé una app React para escanear códigos de barras de etiquetas de transporte. Contribuí a desarrollo full stack, con servicios backend en Java Spring Boot y PostgreSQL.",
+      tags: ["React", "Redux", "Arquitectura Frontend", "Mobile", "Java Spring Boot", "PostgreSQL"],
       logo: "/logos/vincula.svg",
     },
     {
-      role: "Frontend Software Developer",
+      role: "Software Full Stack Developer",
       company: "Software On the Road",
       link: "https://www.softwareontheroad.com",
       period: "Sep 2023 — Nov 2025",
       description:
-        "Trabajé día a día con React, TypeScript, MUI, Node.js, Express, Next.js, MongoDB y PostgreSQL. Progresé de Frontend Developer a Frontend Lead, tomando ownership de arquitectura frontend y decisiones técnicas. Trabajé con arquitecturas Server-Driven UI, integraciones enterprise con SAP y sistemas externos, aporté en backend cuando fue necesario, y apliqué SEO (metadata, HTML semántico, structured data) mejorando la discoverability de forma medible.",
+        "Trabajé día a día con React, TypeScript, MUI, Node.js, Express, Next.js, MongoDB y PostgreSQL. Progresé de Frontend Developer a Full Stack Developer, tomando ownership de arquitectura frontend y decisiones técnicas. Trabajé con arquitecturas Server-Driven UI, integraciones enterprise con SAP y sistemas externos, aporté en backend cuando fue necesario, y apliqué SEO (metadata, HTML semántico, structured data) mejorando la discoverability de forma medible.",
       tags: ["React", "TypeScript", "Next.js", "Node.js", "MongoDB", "PostgreSQL", "SAP"],
       logo: "/logos/software-on-the-road.jpeg",
     },
   ],
   en: [
     {
+      role: "Freelance — Automation & Digital Marketing",
+      company: "AdsWithMarian LLC",
+      period: "Jul 2026 — Present",
+      link: "https://adswithmarian.com/",
+      description:
+        "Built automations and data dashboards to track and report on Google Ads and Meta Ads campaign performance. Automations to monitor and analyze competitors. Designed and developed a landing page with technical SEO.",
+      tags: ["Freelance", "Automation", "Google Ads", "Meta Ads", "Dashboards", "Technical SEO"],
+    },
+    {
       role: "Freelance Web Developer & Automation Specialist",
       company: "Echo Koh Tao",
-      period: "May 2026 — Jul 2026",
+      period: "May 2026 — Jun 2026",
       description:
         "Designed and built conversion-focused responsive landing pages with technical SEO (semantic HTML, metadata, indexing), performance and image optimization, production deploys, and automated workflows for guest data management.",
       link: "https://echokohtao.com/",
-      tags: ["Technical SEO", "Landing Pages", "Performance", "Deploy", "Automation", "Supabase"],
+      tags: ["Freelance", "Technical SEO", "Landing Pages", "Performance", "Deploy", "Automation", "Supabase"],
       logo: "/logos/echo-koh-tao.png",
     },
     {
       role: "Frontend Software Developer",
       company: "Vincula Group (for Sinergia Tech)",
-      period: "Nov 2025 — Mar 2026",
+      period: "Nov 2025 — May 2026",
       link: "https://www.vincula.group",
       description:
-        "Built the frontend for a transport management system for a trucking logistics company, defining the frontend architecture for a small team. Built React interfaces focused on maintainability and reusability, with state management via Redux. On the mobile side, built a React app to scan barcodes on shipping labels.",
-      tags: ["React", "Redux", "Frontend Architecture", "Mobile"],
+        "Led the frontend for a transport management system for a trucking logistics company, defining the frontend architecture for a small team on a business-critical application. Built React interfaces focused on maintainability, reusability and consistent development practices, with state management in Redux. On the mobile side, built a React app to scan barcodes on shipping labels. Contributed to full-stack development, with backend services in Java Spring Boot and PostgreSQL.",
+      tags: ["React", "Redux", "Frontend Architecture", "Mobile", "Java Spring Boot", "PostgreSQL"],
       logo: "/logos/vincula.svg",
     },
     {
-      role: "Frontend Software Developer",
+      role: "Software Full Stack Developer",
       company: "Software On the Road",
       link: "https://www.softwareontheroad.com.ar",
       period: "Sep 2023 — Nov 2025",
       description:
-        "Worked daily with React, TypeScript, MUI, Node.js, Express, Next.js, MongoDB and PostgreSQL. Progressed from Frontend Developer to Frontend Lead, taking ownership of frontend architecture and technical decisions. Worked with Server-Driven UI architectures, enterprise integrations with SAP and external systems, contributed to backend when needed, and applied SEO (metadata, semantic HTML, structured data), measurably improving discoverability.",
+        "Worked daily with React, TypeScript, MUI, Node.js, Express, Next.js, MongoDB and PostgreSQL. Progressed from Frontend Developer to Full Stack Developer, taking ownership of frontend architecture and technical decisions. Worked with Server-Driven UI architectures, enterprise integrations with SAP and external systems, contributed to backend when needed, and applied SEO (metadata, semantic HTML, structured data), measurably improving discoverability.",
       tags: ["React", "TypeScript", "Next.js", "Node.js", "MongoDB", "PostgreSQL", "SAP"],
       logo: "/logos/software-on-the-road.jpeg",
     },

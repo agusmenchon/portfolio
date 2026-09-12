@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Public_Sans, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next"
+
 import { LangProvider } from "@/lib/lang-context";
 import "./globals.css";
 
@@ -40,6 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
       </head>
       <body className="min-h-screen font-sans antialiased">
+        <Analytics /> 
         <LangProvider>{children}</LangProvider>
       </body>
     </html>

@@ -117,7 +117,7 @@ export const EXPERIENCE: Record<Lang, ExperienceItem[]> = {
       description:
         "Desarrollo de automatizaciones y dashboards de datos para trackear y reportar performance de campañas de Google Ads y Meta Ads. Automatizaciones para monitorear y analizar a la competencia. Diseño y desarrollo de landing page con SEO técnico.",
       tags: ["Freelance", "Automatización", "Google Ads", "Meta Ads", "Dashboards", "SEO Técnico"],
-      logo: "/logos/adswithmarian.png",
+      logo: "/logos/adswithmarian.jpeg",
     },
     {
       role: "Freelance Web Developer & Automation Specialist",

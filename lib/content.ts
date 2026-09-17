@@ -4,9 +4,9 @@ export type SectionId = "about" | "experience" | "skills" | "education" | "conta
 
 export const SECTIONS: Record<Lang, { id: SectionId; label: string }[]> = {
   es: [
-    { id: "about", label: "About me" },
+    { id: "about", label: "Sobre mi" },
     { id: "experience", label: "Experiencia" },
-    { id: "skills", label: "Skills" },
+    { id: "skills", label: "Herramientas" },
     { id: "education", label: "Estudios" },
     // { id: "contact", label: "Contacto" },
   ],
